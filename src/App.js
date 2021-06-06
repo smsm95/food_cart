@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+// import { fetchDeserts } from "./redux/desertsReducer";
+import Header from "./components/common/Header";
+import "./App.css";
+import Routes from "./routes";
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    // The api call is commented due to daily qouta limits.
+    // dispatch(fetchDeserts);
+  }, [dispatch]);
+  const deserts = useSelector((state) => state.desertsReducer.deserts);
+  console.log(deserts);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header />
+      <Routes />
+    </>
   );
 }
 
