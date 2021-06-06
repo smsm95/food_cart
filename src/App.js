@@ -1,19 +1,9 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-// import { fetchDeserts } from "./redux/desertsReducer";
+import React from "react";
 import Header from "./components/common/Header";
-import "./App.css";
 import Routes from "./routes";
+import "./App.css";
 
 function App() {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    // The api call is commented due to daily qouta limits.
-    // dispatch(fetchDeserts);
-  }, [dispatch]);
-  const deserts = useSelector((state) => state.desertsReducer.deserts);
-  console.log(deserts);
-
   return (
     <>
       <Header />
