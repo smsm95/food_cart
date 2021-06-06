@@ -1,10 +1,10 @@
 import React from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
-import Home from "../components/Home";
+import Home from "../components/Home/index";
 import SingleDesert from "../components/SingleDesert";
 import PaymentPage from "../components/PaymentPage";
 import Checkout from "../components/Checkout";
 import NotFound from "../components/common/NotFound";
+import { Switch, Route, Redirect } from "react-router-dom";
 
 const Routes = () => {
   return (

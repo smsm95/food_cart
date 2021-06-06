@@ -7,7 +7,35 @@ const FETCH_DESERTS_FAIL = "FETCH_DESERTS_FAIL";
 
 // Initial state
 const INITIAL_STATE = {
-  deserts: [],
+  deserts: [
+    {
+      id: 0,
+      title: "title_1",
+      summary: "Summary",
+      pricePerServing: 12,
+      image: "https://source.unsplash.com/random",
+      readyInMinutes: 45,
+      servings: 2,
+    },
+    {
+      id: 1,
+      title: "title_2",
+      summary: "Summary",
+      pricePerServing: 12,
+      image: "https://source.unsplash.com/random",
+      readyInMinutes: 38,
+      servings: 1,
+    },
+    {
+      id: 3,
+      title: "title_3",
+      summary: "Summary",
+      pricePerServing: 7,
+      image: "https://source.unsplash.com/random",
+      readyInMinutes: 45,
+      servings: 3,
+    },
+  ],
   error: null,
 };
 
