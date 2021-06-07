@@ -1,8 +1,8 @@
 import React from "react";
-import Home from "../components/Home/index";
-import Checkout from "../components/Checkout/Index";
+import Home from "../components/Home";
+import Checkout from "../components/Checkout";
 import NotFound from "../components/Common/NotFound";
-import Cart from "../components/Cart/index";
+import Cart from "../components/Cart";
 import { Switch, Route, Redirect } from "react-router-dom";
 
 const Routes = () => {
