@@ -3,6 +3,7 @@ import { AiOutlineShopping } from "react-icons/ai";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import logo from "../../assets/images/logo.png";
+import logo_1 from "../../assets/images/logo_1.png";
 
 function Header() {
   const history = useHistory();
@@ -32,7 +33,7 @@ function Header() {
           <img
             onClick={() => history.push("/")}
             className="header__logo cursor-pointer"
-            src={logo}
+            src={logo_1}
             alt=""
           />
         </span>
