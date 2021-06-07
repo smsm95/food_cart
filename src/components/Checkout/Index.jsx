@@ -5,6 +5,7 @@ import PaymentForm from "./PaymentForm";
 import Total from "../Cart/Total";
 import EmptyCart from "../Cart/EmptyCart";
 import { completePayment, fetchDeserts } from "../../redux/desertsReducer";
+import Toast from "./Toast";
 
 function Checkout() {
   const totalItemsInCart = useSelector(
@@ -43,29 +44,10 @@ function Checkout() {
           </div>
         </div>
       </div>
-
-      <div className="position-fixed bottom-0 end-0 p-3" style={{ zIndex: 5 }}>
-        <div
-          className={toastVisible ? "hide" : "toast"}
-          role="alert"
-          aria-live="assertive"
-          aria-atomic="true"
-        >
-          <div className="toast-header bg-success">
-            <strong className="me-auto text-white">Success</strong>
-            <button
-              type="button"
-              className="btn-close"
-              data-bs-dismiss="toast"
-              aria-label="Close"
-              onClick={() => setToastVisible(false)}
-            ></button>
-          </div>
-          <div className="toast-body border-bottom border-left border-right">
-            Payment Completed Successfully
-          </div>
-        </div>
-      </div>
+      <Toast
+        toastVisible={toastVisible}
+        onClick={() => setToastVisible(false)}
+      />
     </>
   ) : (
     <EmptyCart />
