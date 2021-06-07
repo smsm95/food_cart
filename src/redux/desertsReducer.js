@@ -132,11 +132,12 @@ const reducer = (state = INITIAL_STATE, action) => {
 export const fetchDeserts = async (dispatch) => {
   await axios
     .get(
-      `https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=12&tags=dessert`
+      `https://api.spoonacular.com/recipes/informationBulk?apiKey=${apiKey}&ids=644693,631785,715449,634091,636328,636766,634854,644681,655525,655043,641435,634237`
     )
     .then(({ data }) => {
       /*  Rounding prices  */
       data.recipes.forEach((recipe) => {
+        console.log(recipe.id);
         recipe.pricePerServing = Math.round(recipe.pricePerServing);
       });
       dispatch({ type: FETCH_DESERTS_SUCCESS, payload: data.recipes });
