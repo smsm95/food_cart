@@ -132,7 +132,7 @@ const reducer = (state = INITIAL_STATE, action) => {
 export const fetchDeserts = async (dispatch) => {
   await axios
     .get(
-      `https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=2&tags=dessert`
+      `https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=12&tags=dessert`
     )
     .then(({ data }) => {
       /*  Rounding prices  */
