@@ -1,7 +1,7 @@
 import React from "react";
 import Home from "../components/Home";
 import Checkout from "../components/Checkout";
-import NotFound from "../components/Common/NotFound";
+import NotFound from "../components/common/NotFound";
 import Cart from "../components/Cart";
 import { Switch, Route, Redirect } from "react-router-dom";
 
