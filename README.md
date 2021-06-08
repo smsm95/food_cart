@@ -4,7 +4,7 @@ Choose from our declicious collection of desserts to tickle your taste buds with
 
 ## Our store
 
-To view our products visit [https://spoonacular.netlify.app/](Spoonacular).
+To view our products visit [Spoonacular](https://spoonacular.netlify.app).
 
 ## Available Scripts
 
@@ -12,7 +12,13 @@ In the project directory, you can run:
 
 ### `npm start`
 
-To run the application in development mode follow the below steps : 1. Clone this repository into your local machine. 2. change your working directory to the downloaded project. 3. run `npm install` to install dependencies. 4. run `npm start` to start the application. 5. Open [http://localhost:3000](http://localhost:3000) to view it in the browser. 6. The page will reload if you make edits.
+To run the application in development mode follow the below steps :
+
+1. Clone this repository into your local machine.
+2. change your working directory to the downloaded project.
+3. run `npm install` to install dependencies.
+4. run `npm start` to start the application.
+5. Open [http://localhost:3000](http://localhost:3000) to view it in the browser. 6. The page will reload if you make edits.
 
 ### `npm test`
 
