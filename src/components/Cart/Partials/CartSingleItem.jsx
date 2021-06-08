@@ -52,7 +52,7 @@ function CartSingleItem({ item }) {
           <div className="d-flex justify-content-between align-items-center ">
             <span
               className="text-danger cursor-pointer"
-              onClick={() => dispatch(removeItemFromCart(item))}
+              onClick={() => dispatch(removeItemFromCart(item, item.quantity))}
             >
               <AiOutlineDelete />
               <span className="cursor-pointer text-muted ms-2">

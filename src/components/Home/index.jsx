@@ -10,7 +10,7 @@ function Home() {
     (state) => state.desertsReducer.totalItemsInCart
   );
 
-  // check if there are no items in cart, fetch new data
+  // Check if there are no items in cart, fetch new data
   useEffect(() => {
     if (!totalItemsInCart || totalItemsInCart === 0) {
       dispatch(fetchDeserts);

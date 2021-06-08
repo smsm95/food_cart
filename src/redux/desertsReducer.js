@@ -41,43 +41,77 @@ const reducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         deserts,
-        itemsInCart: [...state.itemsInCart, action.payload],
+        itemsInCart: [
+          ...state.itemsInCart,
+          { ...action.payload, quantity: 1, inCart: true },
+        ],
         totalItemsInCart: state.totalItemsInCart + 1,
       };
 
     case INCEREMENT_CART_QUANTITY:
+      const itemsInCartToIncrement = [...state.itemsInCart];
       const desertsToIcrement = [...state.deserts];
+
+      // Incrementing the quantity of the object in the cart array
+      const cartItemToIncrement = itemsInCartToIncrement.find(
+        (item) => item.id === action.payload.id
+      );
+      cartItemToIncrement.quantity += 1;
+
+      // Incrementing quantity of the object in the desserts array
       const itemToIncrement = desertsToIcrement.find(
         (desert) => desert.id === action.payload.id
       );
       itemToIncrement.quantity += 1;
+
       return {
         ...state,
         deserts: desertsToIcrement,
+        itemsInCart: itemsInCartToIncrement,
         totalItemsInCart: state.totalItemsInCart + 1,
       };
 
     case DECREMENT_CART_QUANTITY:
+      const itemsInCartToDecrement = [...state.itemsInCart];
       const desertsToDecrement = [...state.deserts];
+
+      // Decrementing the quantity of the object in the cart array
+      const cartItemToDecrement = itemsInCartToDecrement.find(
+        (item) => item.id === action.payload.id
+      );
+      cartItemToDecrement.quantity -= 1;
+
+      // Decrementing quantity of the object in the desserts array
       const itemToDecrement = desertsToDecrement.find(
         (desert) => desert.id === action.payload.id
       );
       itemToDecrement.quantity -= 1;
+
       return {
         ...state,
+        itemsInCart: itemsInCartToDecrement,
         deserts: desertsToDecrement,
         totalItemsInCart: state.totalItemsInCart - 1,
       };
 
     case REMOVE_LAST_ITEM_FROM_CART:
-      const itemToRemove = [...state.deserts].indexOf(action.payload);
       const cartItems = [...state.itemsInCart];
       const desertsToUpdate = [...state.deserts];
-      desertsToUpdate[itemToRemove] = {
-        ...desertsToUpdate[itemToRemove],
-        inCart: false,
-        quantity: 0,
-      };
+
+      // Removing item from the cart
+      const itemToRemove = cartItems.find(
+        (item) => item.id === action.payload.id
+      );
+      itemToRemove.inCart = false;
+      itemToRemove.quantity = 0;
+
+      // Updating the item in the desserts list to keep the UI in sync.
+      const ItemToUpdate = desertsToUpdate.find(
+        (item) => item.id === action.payload.id
+      );
+      ItemToUpdate.inCart = false;
+      ItemToUpdate.quantity = 0;
+
       const updatedCartItems = cartItems.filter(
         (item) => item.id !== action.payload.id
       );
@@ -90,19 +124,27 @@ const reducer = (state = INITIAL_STATE, action) => {
       };
 
     case REMOVE_ITEM_FROM_CART:
-      const item = [...state.deserts].indexOf(action.payload);
       const items = [...state.itemsInCart];
-      const desertsToRemoveFrom = [...state.deserts];
-      desertsToRemoveFrom[item] = {
-        ...desertsToRemoveFrom[item],
-        inCart: false,
-        quantity: 0,
-      };
-      const updatedCart = items.filter((item) => item.id !== action.payload.id);
+      const desserts = [...state.deserts];
+
+      // Upaating the item in the cart
+      const item = items.find((item) => item.id === action.payload.item.id);
+      item.quantity = 0;
+      item.inCart = false;
+
+      const itemInDesserts = desserts.find(
+        (item) => item.id === action.payload.item.id
+      );
+      itemInDesserts.quantity = 0;
+      itemInDesserts.inCart = false;
+
+      const updatedCart = items.filter(
+        (item) => item.id !== action.payload.item.id
+      );
 
       return {
         ...state,
-        deserts: desertsToRemoveFrom,
+        deserts: desserts,
         itemsInCart: updatedCart,
         totalItemsInCart: state.totalItemsInCart - action.payload.quantity,
       };
@@ -119,7 +161,7 @@ const reducer = (state = INITIAL_STATE, action) => {
 export const fetchDeserts = async (dispatch) => {
   await axios
     .get(
-      `https://api.spoonacular.com/recipes/informationBulk?apiKey=${apiKey}&ids=644693,631785,715449,634091,636328,636766,634854,644681,655525`
+      `https://api.spoonacular.com/recipes/informationBulk?apiKey=${apiKey}&ids=644693,634091,636328,636766,634854,644681,655525,631785,715449`
     )
     .then(({ data }) => {
       /*  Rounding prices  */
@@ -140,10 +182,10 @@ export const addItemToCart = (item) => (dispatch) => {
   });
 };
 
-export const removeItemFromCart = (item) => (dispatch) => {
+export const removeItemFromCart = (item, quantity) => (dispatch) => {
   dispatch({
     type: REMOVE_ITEM_FROM_CART,
-    payload: item,
+    payload: { item, quantity },
   });
 };
 
