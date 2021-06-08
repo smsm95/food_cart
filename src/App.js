@@ -7,10 +7,15 @@ import "./App.css";
 
 function App() {
   const dispatch = useDispatch();
-  const rehydrated = useSelector((state) => state._persist.rehydrated);
+  const totalItemsInCart = useSelector(
+    (state) => state.desertsReducer.totalItemsInCart
+  );
   useEffect(() => {
-    if (!rehydrated) dispatch(fetchDeserts);
-  }, [dispatch, rehydrated]);
+    if (!totalItemsInCart || totalItemsInCart === 0) {
+      console.log("fetching");
+      dispatch(fetchDeserts);
+    }
+  }, [dispatch, totalItemsInCart]);
 
   return (
     <>
