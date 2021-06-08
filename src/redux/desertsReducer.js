@@ -4,8 +4,6 @@ const { REACT_APP_SPOONACULAR_API_KEY: apiKey } = process.env;
 // Constants
 const FETCH_DESERTS_SUCCESS = "FETCH_DESERTS_SUCCESS";
 const FETCH_DESERTS_FAIL = "FETCH_DESERTS_FAIL";
-const ADD_FILTER = "ADD_FILTER";
-const REMOVE_FILTER = "REMOVE_FILTER";
 const ADD_ITEM_TO_CART = "ADD_ITEM_TO_CART";
 const INCEREMENT_CART_QUANTITY = "INCREMENT_CART_QUANTITY";
 const DECREMENT_CART_QUANTITY = "DECREMENT_CART_QUANTITY";
@@ -32,17 +30,6 @@ const reducer = (state = INITIAL_STATE, action) => {
 
     case FETCH_DESERTS_FAIL:
       return { ...state, error: action.payload };
-
-    case ADD_FILTER:
-      return { ...state, filters: [...state.filters, action.payload] };
-
-    case REMOVE_FILTER:
-      return {
-        ...state,
-        filters: [...state.filters].filter(
-          (filter) => filter !== action.payload
-        ),
-      };
 
     case ADD_ITEM_TO_CART:
       const deserts = [...state.deserts];
@@ -136,29 +123,14 @@ export const fetchDeserts = async (dispatch) => {
     )
     .then(({ data }) => {
       /*  Rounding prices  */
-      data.recipes.forEach((recipe) => {
-        console.log(recipe.id);
+      data.forEach((recipe) => {
         recipe.pricePerServing = Math.round(recipe.pricePerServing);
       });
-      dispatch({ type: FETCH_DESERTS_SUCCESS, payload: data.recipes });
+      dispatch({ type: FETCH_DESERTS_SUCCESS, payload: data });
     })
     .catch((error) => {
       dispatch({ type: FETCH_DESERTS_FAIL, payload: error });
     });
-};
-
-export const addFilter = (filter) => (dispatch) => {
-  dispatch({
-    type: ADD_FILTER,
-    payload: filter,
-  });
-};
-
-export const removeFilter = (filter) => (dispatch) => {
-  dispatch({
-    type: REMOVE_FILTER,
-    payload: filter,
-  });
 };
 
 export const addItemToCart = (item) => (dispatch) => {
