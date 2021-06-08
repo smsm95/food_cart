@@ -12,7 +12,6 @@ function App() {
   );
   useEffect(() => {
     if (!totalItemsInCart || totalItemsInCart === 0) {
-      console.log("fetching");
       dispatch(fetchDeserts);
     }
   }, [dispatch, totalItemsInCart]);
