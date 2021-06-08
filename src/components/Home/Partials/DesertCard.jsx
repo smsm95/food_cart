@@ -12,6 +12,14 @@ import {
 } from "../../../redux/desertsReducer";
 import PropTypes from "prop-types";
 
+const CrossIcon = () => {
+  return (
+    <span className="text-danger">
+      <VscClose />
+    </span>
+  );
+};
+
 function DesertCard({ item }) {
   const dispatch = useDispatch();
   return (
@@ -23,15 +31,15 @@ function DesertCard({ item }) {
           <ul className="list-group-flush">
             <li className="list-group-item d-flex justify-content-between align-items-center">
               Dairy Free
-              {item.dairyFree ? <FcCheckmark /> : <VscClose />}
+              {item.dairyFree ? <FcCheckmark /> : <CrossIcon />}
             </li>
             <li className="list-group-item d-flex justify-content-between align-items-center">
               Gluten Free
-              {item.glutenFree ? <FcCheckmark /> : <VscClose />}
+              {item.glutenFree ? <FcCheckmark /> : <CrossIcon />}
             </li>
             <li className="list-group-item d-flex justify-content-between align-items-center">
               Vegeterian
-              {item.vegetarian ? <FcCheckmark /> : <VscClose />}
+              {item.vegetarian ? <FcCheckmark /> : <CrossIcon />}
             </li>
           </ul>
         </div>
