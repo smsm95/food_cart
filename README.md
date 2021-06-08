@@ -18,8 +18,9 @@ To run the application in development mode follow the below steps :
 2. change your working directory to the downloaded project.
 3. run `npm install` to install dependencies.
 4. run `npm start` to start the application.
-5. Open [http://localhost:3000](http://localhost:3000) to view it in the browser. 
+5. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 6. The page will reload if you make edits.
+7. Enjoy coding.
 
 ### `npm test`
 
