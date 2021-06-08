@@ -4,7 +4,7 @@ import {
   incrementCardQuantity,
   decrementCardQuantity,
   removeItemFromCart,
-} from "../../redux/desertsReducer";
+} from "../../../redux/desertsReducer";
 import { AiOutlineDelete } from "react-icons/ai";
 import PropTypes from "prop-types";
 

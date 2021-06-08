@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import PaymentForm from "./PaymentForm";
-import Total from "../Cart/Total";
-import EmptyCart from "../Cart/EmptyCart";
 import { completePayment, fetchDeserts } from "../../redux/desertsReducer";
-import Toast from "./Toast";
+import PaymentForm from "./Partials/PaymentForm";
+import Total from "../Cart/Partials/Total";
+import EmptyCart from "../Cart/Partials/EmptyCart";
+import Toast from "./Partials/Toast";
 
 function Checkout() {
   const totalItemsInCart = useSelector(

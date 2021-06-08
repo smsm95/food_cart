@@ -9,7 +9,7 @@ import {
   addItemToCart,
   decrementCardQuantity,
   incrementCardQuantity,
-} from "../../redux/desertsReducer";
+} from "../../../redux/desertsReducer";
 import PropTypes from "prop-types";
 
 function DesertCard({ item }) {

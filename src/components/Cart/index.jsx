@@ -1,9 +1,9 @@
 import React from "react";
-import Items from "./Items";
-import Total from "./Total";
 import { useSelector } from "react-redux";
-import ActionButtons from "./ActionButtons";
-import EmptyCart from "./EmptyCart";
+import Items from "./Partials/Items";
+import Total from "./Partials/Total";
+import ActionButtons from "./Partials/ActionButtons";
+import EmptyCart from "./Partials/EmptyCart";
 
 function Cart() {
   const totalItems = useSelector(

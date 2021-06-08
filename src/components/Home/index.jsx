@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import Main from "./Main";
 import { fetchDeserts } from "../../redux/desertsReducer";
 import { useDispatch, useSelector } from "react-redux";
+import Main from "./Partials/Main";
 
 function Home() {
   const dispatch = useDispatch();

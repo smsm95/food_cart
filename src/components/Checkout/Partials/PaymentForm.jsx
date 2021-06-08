@@ -1,10 +1,10 @@
 import React, { useRef } from "react";
-import visa from "../../assets/images/visa.png";
-import masterCard from "../../assets/images/master_card.jpeg";
-import americanExpress from "../../assets/images/american_express.png";
-import useTotal from "../../hooks/useCartTotal";
-import PropTypes from "prop-types";
 import { BsLock } from "react-icons/bs";
+import visa from "../../../assets/images/visa.png";
+import masterCard from "../../../assets/images/master_card.jpeg";
+import americanExpress from "../../../assets/images/american_express.png";
+import useTotal from "../../../hooks/useCartTotal";
+import PropTypes from "prop-types";
 
 function PaymentForm({ onSubmit }) {
   const total = useTotal();

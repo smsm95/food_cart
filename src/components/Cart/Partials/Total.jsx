@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
-import useTotal from "../../hooks/useCartTotal";
+import useTotal from "../../../hooks/useCartTotal";
 
 const RenderListItem = ({ name, totalAmount }) => {
   return (
