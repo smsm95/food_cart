@@ -19,7 +19,6 @@ function Checkout() {
     setTimeout(() => {
       setToastVisible(true);
     }, 300);
-    setToastVisible(true);
     setTimeout(() => {
       setToastVisible(false);
     }, 2000);
