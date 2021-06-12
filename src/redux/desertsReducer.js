@@ -12,7 +12,7 @@ const REMOVE_ITEM_FROM_CART = "REMOVE_ITEM_FROM_CART";
 const COMPLETE_PAYMENT = "COMPLETE_PAYMENT";
 
 // Initial state
-const INITIAL_STATE = {
+const initialState = {
   deserts: [],
   itemsInCart: [],
   totalItemsInCart: 0,
@@ -20,7 +20,7 @@ const INITIAL_STATE = {
 };
 
 // Reducer
-const reducer = (state = INITIAL_STATE, action) => {
+const reducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_DESERTS_SUCCESS:
       return {
